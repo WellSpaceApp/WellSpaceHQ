@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>WellSpace HQ — The Space Between How Students Feel and What Teachers Know</title>
+<meta name="description" content="WellSpace is a free student wellness web app for high school students and educators. Private mood check-ins. Teacher dashboards. No download required."/>
+<meta property="og:title" content="WellSpace HQ"/>
+<meta property="og:description" content="A free tool so students never have to say it out loud."/>
+<meta property="og:url" content="https://wellspacehq.github.io"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --navy:#0F2942;
+  --navy-mid:#1a3a5c;
+  --green:#2E9E6B;
+  --green-dark:#1B6B47;
+  --green-pale:#E8F5EF;
+  --cream:#F7F4EC;
+  --paper:#FDFCF8;
+  --ink:#1C2B3A;
+  --muted:#5A6B7A;
+  --border:#DDE3E8;
+  --white:#FFFFFF;
+  --red-soft:#FEF2F2;
+  --red:#DC2626;
+  --amber:#D97706;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:16px;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(15,41,66,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  padding:0 2rem;
+  height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{
+  font-family:'Fraunces',serif;
+  font-size:1.25rem;
+  color:var(--white);
+  text-decoration:none;
+  font-weight:600;
+}
+.nav-brand span{color:var(--green);}
+.nav-links{display:flex;gap:1.5rem;align-items:center;}
+.nav-links a{
+  color:rgba(255,255,255,0.7);
+  text-decoration:none;
+  font-size:0.875rem;
+  font-weight:400;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{
+  background:var(--green);
+  color:var(--white) !important;
+  padding:0.45rem 1rem;
+  border-radius:6px;
+  font-weight:500 !important;
+  transition:background 0.2s !important;
+}
+.nav-cta:hover{background:var(--green-dark) !important;}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;}
+.nav-toggle span{display:block;width:22px;height:2px;background:white;margin:5px 0;transition:0.3s;}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(160deg, var(--navy) 0%, #0d3554 60%, #0a2640 100%);
+  display:flex;align-items:center;
+  padding:100px 2rem 60px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;top:-40%;right:-20%;
+  width:700px;height:700px;
+  background:radial-gradient(circle, rgba(46,158,107,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';
+  position:absolute;bottom:-20%;left:-10%;
+  width:500px;height:500px;
+  background:radial-gradient(circle, rgba(29,95,166,0.1) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:760px;
+  margin:0 auto;
+  text-align:center;
+  position:relative;z-index:1;
+}
+.hero-eyebrow{
+  display:inline-block;
+  font-size:0.8rem;
+  font-weight:500;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--green);
+  background:rgba(46,158,107,0.12);
+  border:1px solid rgba(46,158,107,0.25);
+  padding:0.35rem 0.9rem;
+  border-radius:20px;
+  margin-bottom:1.75rem;
+}
+.hero h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2.4rem,6vw,4rem);
+  font-weight:600;
+  color:var(--white);
+  line-height:1.15;
+  margin-bottom:1.5rem;
+  letter-spacing:-0.01em;
+}
+.hero h1 em{
+  font-style:italic;
+  color:var(--green);
+}
+.hero-sub{
+  font-size:1.1rem;
+  color:rgba(255,255,255,0.65);
+  max-width:540px;
+  margin:0 auto 2.5rem;
+  line-height:1.7;
+  font-weight:300;
+}
+.hero-actions{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  margin-bottom:3rem;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--green);
+  color:white;
+  padding:0.85rem 1.75rem;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:500;
+  font-size:0.95rem;
+  transition:background 0.2s,transform 0.15s;
+}
+.btn-primary:hover{background:var(--green-dark);transform:translateY(-1px);}
+.btn-outline-white{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  border:1px solid rgba(255,255,255,0.25);
+  color:rgba(255,255,255,0.85);
+  padding:0.85rem 1.75rem;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:400;
+  font-size:0.95rem;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-outline-white:hover{border-color:rgba(255,255,255,0.5);color:white;}
+.hero-stats{
+  display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:2rem;
+}
+.hero-stat{text-align:center;}
+.hero-stat-num{
+  font-family:'Fraunces',serif;
+  font-size:1.75rem;
+  color:var(--white);
+  font-weight:600;
+  display:block;
+}
+.hero-stat-label{
+  font-size:0.78rem;
+  color:rgba(255,255,255,0.45);
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+}
+
+/* SOCIAL PROOF STRIP */
+.proof-strip{
+  background:var(--cream);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:1.25rem 2rem;
+  overflow:hidden;
+}
+.proof-strip-inner{
+  max-width:900px;margin:0 auto;
+  display:flex;gap:2rem;align-items:flex-start;
+  flex-wrap:wrap;
+}
+.proof-quote{
+  flex:1;min-width:240px;
+  display:flex;gap:0.75rem;align-items:flex-start;
+}
+.proof-quote-mark{
+  font-family:'Fraunces',serif;
+  font-size:2rem;
+  color:var(--green);
+  line-height:1;
+  flex-shrink:0;
+  margin-top:-4px;
+}
+.proof-quote-text{
+  font-size:0.82rem;
+  color:var(--muted);
+  font-style:italic;
+  line-height:1.5;
+}
+.proof-quote-attr{
+  font-size:0.75rem;
+  color:var(--green-dark);
+  font-weight:500;
+  font-style:normal;
+  display:block;
+  margin-top:0.25rem;
+}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.section-inner{max-width:900px;margin:0 auto;}
+.section-eyebrow{
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--green);
+  margin-bottom:0.75rem;
+  display:block;
+}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  font-weight:600;
+  color:var(--navy);
+  line-height:1.2;
+  margin-bottom:1rem;
+}
+.section-body{
+  font-size:1rem;
+  color:var(--muted);
+  max-width:600px;
+  line-height:1.75;
+}
+
+/* MISSION */
+.mission{background:var(--white);}
+.mission-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+  margin-top:3rem;
+}
+.mission-story{
+  font-size:1rem;
+  color:var(--ink);
+  line-height:1.85;
+}
+.mission-story p{margin-bottom:1.25rem;}
+.mission-story p:last-child{margin-bottom:0;}
+.mission-story strong{color:var(--navy);}
+.mission-values{display:flex;flex-direction:column;gap:1.25rem;}
+.value-card{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1.25rem;
+  display:flex;gap:1rem;align-items:flex-start;
+}
+.value-icon{
+  width:36px;height:36px;
+  background:var(--green-pale);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+  flex-shrink:0;
+}
+.value-title{font-weight:600;color:var(--navy);font-size:0.9rem;margin-bottom:0.25rem;}
+.value-desc{font-size:0.85rem;color:var(--muted);line-height:1.5;}
+
+/* HOW IT WORKS */
+.how{background:var(--cream);}
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+  margin-top:3rem;
+}
+.step{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1.75rem;
+  position:relative;
+}
+.step-num{
+  font-family:'Fraunces',serif;
+  font-size:2.5rem;
+  font-weight:700;
+  color:var(--muted);
+  line-height:1;
+  margin-bottom:0.75rem;
+}
+.step-title{font-weight:600;color:var(--navy);margin-bottom:0.5rem;font-size:1rem;}
+.step-desc{font-size:0.875rem;color:var(--muted);line-height:1.6;}
+
+/* FOR TEACHERS */
+.teachers{background:var(--white);}
+.teachers-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+  margin-top:3rem;
+  align-items:start;
+}
+.teachers-copy p{
+  font-size:1rem;color:var(--ink);line-height:1.8;margin-bottom:1rem;
+}
+.teachers-copy p:last-child{margin-bottom:0;}
+.privacy-card{
+  background:linear-gradient(135deg,var(--navy) 0%,#1a3a5c 100%);
+  border-radius:14px;
+  padding:2rem;
+  color:white;
+}
+.privacy-card h3{
+  font-family:'Fraunces',serif;
+  font-size:1.3rem;
+  font-weight:600;
+  margin-bottom:1.5rem;
+  color:white;
+}
+.privacy-item{
+  display:flex;gap:0.75rem;align-items:flex-start;
+  margin-bottom:1.25rem;
+}
+.privacy-item:last-child{margin-bottom:0;}
+.privacy-dot{
+  width:20px;height:20px;
+  background:rgba(46,158,107,0.2);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.privacy-dot::after{
+  content:'';
+  width:6px;height:6px;
+  background:var(--green);
+  border-radius:50%;
+}
+.privacy-item-text{font-size:0.875rem;color:rgba(255,255,255,0.8);line-height:1.5;}
+.privacy-item-text strong{color:white;}
+.data-note{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:8px;
+  padding:1rem;
+  margin-top:1.5rem;
+  font-size:0.8rem;
+  color:rgba(255,255,255,0.6);
+  line-height:1.6;
+}
+.data-note strong{color:rgba(255,255,255,0.85);}
+
+/* QUICK ANSWERS */
+.quick-answers{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-top:2.5rem;
+}
+.qa-card{
+  background:var(--green-pale);
+  border:1px solid rgba(46,158,107,0.15);
+  border-radius:10px;
+  padding:1.25rem;
+}
+.qa-q{font-size:0.8rem;font-weight:600;color:var(--navy);margin-bottom:0.5rem;}
+.qa-a{font-size:0.875rem;color:var(--ink);line-height:1.5;}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--cream);}
+.testimonials-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;
+  margin-top:3rem;
+}
+.testimonial{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1.5rem;
+}
+.testimonial-text{
+  font-size:0.9rem;
+  color:var(--ink);
+  line-height:1.7;
+  margin-bottom:1rem;
+  font-style:italic;
+}
+.testimonial-text::before{
+  content:'\201C';
+  font-family:'Fraunces',serif;
+  font-size:1.5rem;
+  color:var(--green);
+  display:block;
+  line-height:1;
+  margin-bottom:0.25rem;
+}
+.testimonial-attr{
+  font-size:0.78rem;
+  font-weight:600;
+  color:var(--muted);
+}
+
+/* FAQ */
+.faq{background:var(--white);}
+.faq-list{margin-top:2.5rem;max-width:700px;}
+.faq-item{
+  border-bottom:1px solid var(--border);
+}
+.faq-q{
+  width:100%;
+  background:none;
+  border:none;
+  text-align:left;
+  padding:1.25rem 0;
+  font-size:0.95rem;
+  font-weight:500;
+  color:var(--navy);
+  cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:1rem;
+  font-family:'DM Sans',sans-serif;
+}
+.faq-q:hover{color:var(--green);}
+.faq-icon{
+  width:20px;height:20px;
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--green);
+  font-size:1.1rem;
+  transition:transform 0.2s;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{
+  display:none;
+  padding:0 0 1.25rem;
+  font-size:0.9rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+.faq-item.open .faq-a{display:block;}
+
+/* VOLUNTEER */
+.volunteer{
+  background:linear-gradient(160deg,var(--navy) 0%,#0d3554 100%);
+  color:white;
+}
+.volunteer .section-title{color:white;}
+.volunteer .section-body{color:rgba(255,255,255,0.65);}
+.roles-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1rem;
+  margin-top:2.5rem;
+  margin-bottom:2.5rem;
+}
+.role-card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  padding:1.25rem;
+  transition:background 0.2s,border-color 0.2s;
+}
+.role-card:hover{
+  background:rgba(255,255,255,0.09);
+  border-color:rgba(46,158,107,0.4);
+}
+.role-title{
+  font-weight:600;
+  color:white;
+  font-size:0.9rem;
+  margin-bottom:0.4rem;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.role-emoji{font-size:1rem;}
+.role-desc{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.5;}
+.volunteer-cta{text-align:center;}
+.btn-green-lg{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--green);
+  color:white;
+  padding:1rem 2.5rem;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:1rem;
+  transition:background 0.2s,transform 0.15s;
+}
+.btn-green-lg:hover{background:var(--green-dark);transform:translateY(-1px);}
+.consent-note{
+  font-size:0.8rem;
+  color:rgba(255,255,255,0.4);
+  margin-top:0.75rem;
+}
+
+/* TIMELINE */
+.timeline-section{background:var(--cream);}
+.timeline{
+  margin-top:2.5rem;
+  max-width:600px;
+  position:relative;
+  padding-left:1.5rem;
+}
+.timeline::before{
+  content:'';
+  position:absolute;left:0;top:8px;bottom:8px;
+  width:2px;background:var(--border);
+}
+.timeline-item{
+  position:relative;
+  margin-bottom:1.5rem;
+  padding-left:1.25rem;
+}
+.timeline-item::before{
+  content:'';
+  position:absolute;left:-1.875rem;top:6px;
+  width:8px;height:8px;
+  background:var(--green);
+  border-radius:50%;
+  border:2px solid var(--cream);
+}
+.timeline-date{
+  font-size:0.75rem;
+  font-weight:600;
+  color:var(--green);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  margin-bottom:0.25rem;
+}
+.timeline-text{
+  font-size:0.9rem;
+  color:var(--ink);
+  line-height:1.5;
+}
+
+/* CONTACT */
+.contact{background:var(--white);}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+  margin-top:2.5rem;
+  align-items:start;
+}
+.contact-item{
+  display:flex;gap:1rem;align-items:flex-start;
+  margin-bottom:1.5rem;
+}
+.contact-icon{
+  width:40px;height:40px;
+  background:var(--green-pale);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+  flex-shrink:0;
+}
+.contact-label{
+  font-size:0.75rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--muted);
+  margin-bottom:0.25rem;
+}
+.contact-value{
+  font-size:0.9rem;
+  color:var(--ink);
+}
+.contact-value a{
+  color:var(--green-dark);
+  text-decoration:none;
+  font-weight:500;
+}
+.contact-value a:hover{text-decoration:underline;}
+.socials{display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:0.25rem;}
+.social-pill{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:0.35rem 0.8rem;
+  font-size:0.8rem;
+  color:var(--ink);
+  text-decoration:none;
+  font-weight:500;
+  transition:border-color 0.2s,color 0.2s;
+}
+.social-pill:hover{border-color:var(--green);color:var(--green);}
+.schedule-card{
+  background:linear-gradient(135deg,var(--navy),#1a3a5c);
+  border-radius:12px;
+  padding:2rem;
+  color:white;
+  text-align:center;
+}
+.schedule-card h3{
+  font-family:'Fraunces',serif;
+  font-size:1.3rem;
+  margin-bottom:0.75rem;
+  color:white;
+}
+.schedule-card p{
+  font-size:0.875rem;
+  color:rgba(255,255,255,0.65);
+  margin-bottom:1.5rem;
+  line-height:1.6;
+}
+.btn-schedule{
+  display:inline-block;
+  background:var(--green);
+  color:white;
+  padding:0.75rem 1.75rem;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:0.9rem;
+  transition:background 0.2s;
+}
+.btn-schedule:hover{background:var(--green-dark);}
+
+/* FOOTER */
+footer{
+  background:var(--navy);
+  color:rgba(255,255,255,0.5);
+  padding:2.5rem 2rem;
+  text-align:center;
+}
+.footer-inner{max-width:900px;margin:0 auto;}
+.footer-brand{
+  font-family:'Fraunces',serif;
+  font-size:1.1rem;
+  color:white;
+  margin-bottom:0.5rem;
+}
+.footer-links{
+  display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;
+  margin:1rem 0;
+}
+.footer-links a{
+  color:rgba(255,255,255,0.45);
+  text-decoration:none;
+  font-size:0.82rem;
+  transition:color 0.2s;
+}
+.footer-links a:hover{color:white;}
+.footer-copy{font-size:0.78rem;margin-top:0.5rem;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    position:fixed;top:60px;left:0;right:0;
+    background:var(--navy);
+    padding:1.5rem 2rem;
+    gap:1rem;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .nav-toggle{display:block;}
+  .mission-grid,
+  .teachers-grid,
+  .contact-grid{grid-template-columns:1fr;}
+  .steps,
+  .testimonials-grid{grid-template-columns:1fr;}
+  .quick-answers{grid-template-columns:1fr;}
+  .roles-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:2rem;}
+  section{padding:3.5rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Well<span>Space</span> HQ</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#mission">Mission</a>
+    <a href="#for-teachers">For Teachers</a>
+    <a href="#faq">FAQ</a>
+    <a href="#volunteer">Volunteer</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wellspaceapp.github.io/WellSpace/" class="nav-cta">Try the Site</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Free Student Wellness Web App</span>
+    <h1>The space between how students feel and what <em>teachers know.</em></h1>
+    <p class="hero-sub">WellSpace gives students a private voice and educators a clear picture. No awkward conversations required. No download. Free forever.</p>
+    <div class="hero-actions">
+      <a href="https://wellspaceapp.github.io/WellSpace/" class="btn-primary">Try WellSpace For Free</a>
+      <a href="#mission" class="btn-outline-white">Learn more</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">Free</span>
+        <span class="hero-stat-label">Always</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">10 sec</span>
+        <span class="hero-stat-label">Student check-in</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">0</span>
+        <span class="hero-stat-label">Downloads needed</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">Private</span>
+        <span class="hero-stat-label">By default</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-strip-inner">
+    <div class="proof-quote">
+      <span class="proof-quote-mark">"</span>
+      <div class="proof-quote-text">
+        This is really awesome. Thanks for taking the time to make this and keep it free.
+        <span class="proof-quote-attr">Anonymous educator</span>
+      </div>
+    </div>
+    <div class="proof-quote">
+      <span class="proof-quote-mark">"</span>
+      <div class="proof-quote-text">
+        Many students are too nervous to bring up certain issues in front of their peers, so this creates a way to communicate needs.
+        <span class="proof-quote-attr">Anonymous educator</span>
+      </div>
+    </div>
+    <div class="proof-quote">
+      <span class="proof-quote-mark">"</span>
+      <div class="proof-quote-text">
+        Such a brilliant and considerate idea. Thank you.
+        <span class="proof-quote-attr">Anonymous educator</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<section class="mission" id="mission">
+  <div class="section-inner">
+    <span class="section-eyebrow">Why this exists</span>
+    <h2 class="section-title">Built by a student who got tired of the silence.</h2>
+    <div class="mission-grid">
+      <div class="mission-story">
+        <p>The idea came from watching my own teacher run a daily Google Form so students could flag how they were doing before class started. It worked well. But it was a generic form with no real structure, easy to forget, and impossible to build on.</p>
+        <p>Most students would rather say nothing than say <strong>"I'm not okay"</strong> in front of everyone. WellSpace gives them a way to say it privately, to the teacher they trust, in ten seconds.</p>
+        <p>Teachers get a simple dashboard showing who might need a check-in that day. Students control everything they share. Nothing is visible to anyone unless the student explicitly sends it.</p>
+        <p>This is not a school board system or an official records platform. It is a classroom tool, built the way it should have been built from the start.</p>
+      </div>
+      <div class="mission-values">
+        <div class="value-card">
+          <div class="value-icon">🔒</div>
+          <div>
+            <div class="value-title">Privacy first</div>
+            <div class="value-desc">Students control their own data at all times. Nothing is shared without their explicit action.</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💚</div>
+          <div>
+            <div class="value-title">Free forever</div>
+            <div class="value-desc">No subscriptions, no ads, no paywalls. No student or school should be priced out of wellness tools.</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🎯</div>
+          <div>
+            <div class="value-title">Human-centred</div>
+            <div class="value-desc">Every feature exists to help real students with real pressures, not to generate data.</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌱</div>
+          <div>
+            <div class="value-title">Built in public</div>
+            <div class="value-desc">One student, one summer, building something real. No corporate backing. No venture capital.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <span class="section-eyebrow">How it works</span>
+    <h2 class="section-title">Simple for students. Useful for teachers.</h2>
+    <p class="section-body">WellSpace runs in any browser with no download or installation. Teachers create a class and share a code. Students join with that code and start checking in.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Teacher creates a class</div>
+        <div class="step-desc">Takes two minutes. Set the subject, schedule, and generate an 8-character code to share with students.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Students join and check in</div>
+        <div class="step-desc">Students enter the code, sign up, and log how they're feeling at the start of each period. Ten seconds. They choose what to share.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Teacher sees what matters</div>
+        <div class="step-desc">The teacher dashboard shows who might need support today, based only on what students have chosen to share.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR TEACHERS -->
+<section class="teachers" id="for-teachers">
+  <div class="section-inner">
+    <span class="section-eyebrow">For educators</span>
+    <h2 class="section-title">Does it need school board approval?</h2>
+    <div class="teachers-grid">
+      <div class="teachers-copy">
+        <p>Individual teachers can use WellSpace independently in their own classrooms, the same way you would use Google Forms, Notion, or any other tool you choose to adopt on your own initiative. No board approval is needed for personal classroom use.</p>
+        <p>However, if your school board requires formal approval for third-party tools, or if you are looking to roll it out school-wide or district-wide, you can follow your board's standard process for third-party software and data agreements. WellSpace is transparent about its privacy practices and happy to provide any documentation your board needs.</p>
+        <p>That said, we understand that data privacy is a real concern in Ontario schools. Here is exactly how WellSpace handles data.</p>
+
+        <div class="quick-answers">
+          <div class="qa-card">
+            <div class="qa-q">Is it free?</div>
+            <div class="qa-a">Yes. No subscriptions, no trials, no hidden fees. Free for teachers and students.</div>
+          </div>
+          <div class="qa-card">
+            <div class="qa-q">Is student data private?</div>
+            <div class="qa-a">Yes. Students share only what they choose to share. Nothing is visible by default.</div>
+          </div>
+          <div class="qa-card">
+            <div class="qa-q">Does it need approval?</div>
+            <div class="qa-a">Not for individual teacher use. For board-wide rollout, follow your board's standard third-party tool approval process.</div>
+          </div>
+        </div>
+      </div>
+      <div class="privacy-card">
+        <h3>How your data is stored</h3>
+        <div class="privacy-item">
+          <div class="privacy-dot"></div>
+          <div class="privacy-item-text"><strong>Student data is private by default.</strong> Nothing is shared with a teacher unless the student explicitly clicks "Share with Teacher."</div>
+        </div>
+        <div class="privacy-item">
+          <div class="privacy-dot"></div>
+          <div class="privacy-item-text"><strong>Passwords are never stored by WellSpace.</strong> Firebase Authentication handles all credentials using industry-standard encryption.</div>
+        </div>
+        <div class="privacy-item">
+          <div class="privacy-dot"></div>
+          <div class="privacy-item-text"><strong>Each user has their own private document.</strong> No shared blobs. No cross-user access. Firestore security rules are enforced server-side.</div>
+        </div>
+        <div class="privacy-item">
+          <div class="privacy-dot"></div>
+          <div class="privacy-item-text"><strong>No advertising. No tracking pixels. No analytics.</strong> We use Google Firebase, EmailJS, and GitHub Pages only.</div>
+        </div>
+        <div class="privacy-item">
+          <div class="privacy-dot"></div>
+          <div class="privacy-item-text"><strong>Students can delete their account instantly.</strong> All data is permanently removed with no retention.</div>
+        </div>
+        <div class="data-note">
+          <strong>Note on Canadian data storage:</strong> Firebase currently stores data on US-based Google servers by default. Canadian data residency (Montreal) is available on Firebase's paid tier. WellSpace is currently on the free tier. If your board requires Canadian-only data hosting, this is the current limitation to be aware of. We recommend using WellSpace as an independent classroom tool rather than a board-sanctioned system until this changes.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <span class="section-eyebrow">What people are saying</span>
+    <h2 class="section-title">Real feedback from real teachers.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="testimonial-text">Hey as a teacher in Ontario who almost exclusively taught Grade 7 and 8, this is really awesome. Thanks for taking the time to make this and keep it free.</div>
+        <div class="testimonial-attr">Anonymous educator</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-text">This is a great idea. Many students are too nervous to bring up certain issues in front of their peers, so this creates a way to communicate needs.</div>
+        <div class="testimonial-attr">Anonymous educator</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <span class="section-eyebrow">Common questions</span>
+    <h2 class="section-title">Frequently asked questions.</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Where is student data stored?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Student data is stored on Google Firebase, which provides encrypted connections (HTTPS) and strict per-user security rules. Each user's data is stored in their own private Firestore document. Note that Firebase's free tier uses US-based Google servers. Canadian data residency (Montreal) is available on Firebase's paid tier. We are transparent about this limitation and recommend individual teacher use rather than board-sanctioned rollout until this is resolved.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can teachers see everything a student enters?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">No. Teachers only see what a student explicitly chooses to share. Students have a "Share with Teacher" toggle on every entry, including mood check-ins, sleep logs, and wellness data. Private journal entries are never visible to anyone. If a student keeps something private, it stays private.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Does WellSpace replace a school guidance counsellor?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">No. WellSpace is a classroom check-in tool, not a counselling or crisis intervention system. If a student shares something that requires escalation, teachers follow the same school procedures they normally would. WellSpace does include built-in province-specific crisis helpline resources so students know where to get real support when they need it.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I need school board approval to use this?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Not for individual teacher use. You can use WellSpace the same way you would adopt any classroom tool independently, the same way teachers use Google Forms, Notion, or other tools without requiring district approval. For board-wide rollout, you would want to follow your board's standard process for third-party tools and data agreements.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is this actually free? What is the catch?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">There is no catch. WellSpace is free for teachers and students with no subscription, no trial period, and no ads. It is built and maintained by one student who believes no school should be priced out of a wellness tool. The only costs are Firebase's free tier limits, which we manage carefully.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can students see each other's responses?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">No. Student responses are only visible to the teacher whose class they chose to share with. Other students cannot see any responses. The only people who can ever see a student's shared data are that student and the specific teacher they sent it to.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What does WellSpace actually include?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">For students: daily mood check-ins per class period, a weekly goal planner, a sleep and wellness tracker, a private journal, and province-specific crisis helpline resources. For teachers: a student dashboard showing shared moods and wellness data, a class management system with codes, mood trend alerts, and a social worker contact field that appears when students log a negative mood.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Does it work on phones and school Chromebooks?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Yes. WellSpace is a Progressive Web App that works in any browser on any device, including phones, tablets, and Chromebooks. No download or app store is required. Students can also add it to their home screen to use it like a native app.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I get started as a teacher?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Go to wellspaceapp.github.io/WellSpace, click "I'm a Teacher," sign up with your email, and create your first class. The whole setup takes under five minutes. Share the class code with your students and they can join immediately. You can also schedule a short walkthrough using the link in the Contact section below if you prefer to see it live first.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER -->
+<section class="volunteer" id="volunteer">
+  <div class="section-inner">
+    <span class="section-eyebrow" style="color:var(--green)">Get involved</span>
+    <h2 class="section-title">Help build something that matters.</h2>
+    <p class="section-body">WellSpace is one student building something real. There are parts of this that are too important to do alone. If any of the roles below sound like you, we want to hear from you.</p>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-title"><span class="role-emoji">🎬</span> Content Creator</div>
+        <div class="role-desc">Plans, films, edits, and posts the videos and graphics that get WellSpace in front of people who have never heard of it. You do not need to show your face. Screen recordings, AI voiceover, and text-on-screen are all fine.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-title"><span class="role-emoji">📣</span> Partnerships and Outreach</div>
+        <div class="role-desc">Finds and contacts teachers, schools, and after-school programs, writes the outreach message, and follows up. Good fit if you are comfortable writing to adults you do not know and seeing it through.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-title"><span class="role-emoji">💰</span> Grants and Funding</div>
+        <div class="role-desc">Researches scholarships, youth innovation grants, and funding opportunities, and helps put together the actual application. Good fit if you are a strong researcher and writer.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-title"><span class="role-emoji">💬</span> Community and Support</div>
+        <div class="role-desc">Handles replies, DMs, and questions from students and teachers. Helps new users get set up and flags anything that needs immediate attention. Good fit if you are organized and responsive.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-title"><span class="role-emoji">🔍</span> Research and Strategy</div>
+        <div class="role-desc">Looks at what is working for similar youth-led and wellness projects, brings back real findings, and helps inform decisions about direction. Good fit if you like digging into information and presenting what you find clearly.</div>
+      </div>
+    </div>
+    <div class="volunteer-cta">
+      <a href="https://forms.gle/B25bTZUp7PzgkpXw8" class="btn-green-lg">Apply to Volunteer</a>
+      <p class="consent-note">Volunteers under 18 will be asked to provide parental consent as part of the application. All roles are remote and unpaid.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section" id="timeline">
+  <div class="section-inner">
+    <span class="section-eyebrow">Built in public</span>
+    <h2 class="section-title">How this got here.</h2>
+    <p class="section-body">No corporate backing. No venture capital. Just one student building something real, one fix at a time.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">March 2026</div>
+        <div class="timeline-text">First version of WellSpace goes live. HTML, CSS, and JavaScript on GitHub Pages.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">June 2026</div>
+        <div class="timeline-text">WellSpace posted to online educator communities. 9,500 views. A teacher-researcher reaches out to run a trial.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <span class="section-eyebrow">Get in touch</span>
+    <h2 class="section-title">We read every message.</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:wellspacewebsite@gmail.com">wellspacewebsite@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">👤</div>
+          <div>
+            <div class="contact-label">Creator</div>
+            <div class="contact-value"><a href="https://www.linkedin.com/in/muhammad-taha-480222360/">Muhammad Taha on LinkedIn</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-label">Social Media</div>
+            <div class="contact-value">
+              <div class="socials">
+                <a href="https://www.tiktok.com/@wellspaceweb" class="social-pill">TikTok</a>
+                <a href="https://www.instagram.com/wellspaceweb/" class="social-pill">Instagram</a>
+                <a href="https://www.youtube.com/@WellSpaceWeb" class="social-pill">YouTube</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💻</div>
+          <div>
+            <div class="contact-label">The Site</div>
+            <div class="contact-value"><a href="https://wellspaceapp.github.io/WellSpace/">wellspaceapp.github.io/WellSpace</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📋</div>
+          <div>
+            <div class="contact-label">Privacy Policy</div>
+            <div class="contact-value"><a href="https://wellspaceapp.github.io/WellSpace/privacy.html">Read our Privacy Policy</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <h3>Schedule a walkthrough</h3>
+        <p>If you are a teacher, researcher, or school looking to try WellSpace and want a live walkthrough before getting started, book a short call directly.</p>
+        <a href="https://calendar.app.google/GrJgmcMa7WrpBcs96" class="btn-schedule">Book a time</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">WellSpace HQ</div>
+    <div class="footer-links">
+      <a href="https://wellspaceapp.github.io/WellSpace/">The Site</a>
+      <a href="https://forms.gle/B25bTZUp7PzgkpXw8">Volunteer</a>
+      <a href="mailto:wellspacewebsite@gmail.com">Contact</a>
+      <a href="https://www.linkedin.com/in/muhammad-taha-480222360/">LinkedIn</a>
+      <a href="https://github.com/WellSpaceApp/WellSpace">GitHub</a>
+      <a href="https://wellspaceapp.github.io/WellSpace/privacy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-copy">Built by Muhammad Taha. Ontario, Canada. 2025 to 2026. Free forever.</div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn){
+  const item = btn.closest('.faq-item');
+  item.classList.toggle('open');
+}
+
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+navToggle.addEventListener('click',()=>{
+  navLinks.classList.toggle('open');
+});
+</script>
+</body>
+</html>
