@@ -932,7 +932,7 @@ footer{
           Where is student data stored?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Student data is stored on Google Firebase, which provides encrypted connections (HTTPS) and strict per-user security rules. Each user's data is stored in their own private Firestore document. Note that Firebase's free tier uses US-based Google servers. Canadian data residency (Montreal) is available on Firebase's paid tier. We are transparent about this limitation and recommend individual teacher use rather than board-sanctioned rollout until this is resolved.</div>
+        <div class="faq-a">Student data is stored on Google Firebase on North American servers, with encrypted HTTPS connections and strict per-user security rules. Each user's data is stored in their own private Firestore document with no cross-user access possible. Data is kept until a student deletes their account. Accounts inactive for 24 months are automatically deleted along with all data. We are transparent about one current limitation: Canadian data residency on Montreal servers requires Firebase's paid tier, which WellSpace does not currently use.</div>
       </div>
 
       <div class="faq-item">
@@ -942,7 +942,11 @@ footer{
         </button>
         <div class="faq-a">No. Teachers only see what a student explicitly chooses to share. Students have a "Share with Teacher" toggle on every entry, including mood check-ins, sleep logs, and wellness data. Private journal entries are never visible to anyone. If a student keeps something private, it stays private.</div>
       </div>
-
+<div class="faq-item">
+  <button class="faq-q" onclick="toggleFaq(this)">How long is student data kept?<span class="faq-icon">+</span></button>
+  <div class="faq-a">Data is stored until a student deletes their account. Accounts inactive for 24 months are automatically deleted along with all associated data. There is no backup and no way to recover deleted data. Students can delete everything instantly at any time from their profile settings.</div>
+</div>
+      
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           Does WellSpace replace a school guidance counsellor?
@@ -950,7 +954,10 @@ footer{
         </button>
         <div class="faq-a">No. WellSpace is a classroom check-in tool, not a counselling or crisis intervention system. If a student shares something that requires escalation, teachers follow the same school procedures they normally would. WellSpace does include built-in province-specific crisis helpline resources so students know where to get real support when they need it.</div>
       </div>
-
+      <div class="faq-item">
+  <button class="faq-q" onclick="toggleFaq(this)">Can WellSpace be used as an official student record?<span class="faq-icon">+</span></button>
+  <div class="faq-a">No. WellSpace is a classroom check-in tool, not an official record system. Teachers should not rely on WellSpace as the sole documentation of any student concern. Anything requiring follow-up, safeguarding action, or formal documentation must be recorded through your school's standard procedures. If a student deletes their account, all data is permanently gone and cannot be recovered by anyone including WellSpace.</div>
+</div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           Do I need school board approval to use this?
