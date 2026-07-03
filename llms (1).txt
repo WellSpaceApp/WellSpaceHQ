@@ -1,0 +1,27 @@
+# WellSpace HQ
+
+> WellSpace HQ is the marketing and information site for WellSpace, a free student wellness web app. This page explains what WellSpace is and links to the actual app.
+
+## What it is
+WellSpace HQ is a landing page aimed at teachers, schools, and students, explaining what the WellSpace app does, how privacy works, and how to get started. It is not the app itself.
+
+## The actual app
+The WellSpace app (mood check-ins, journal, teacher dashboards) lives at:
+https://wellspaceapp.github.io/WellSpace/
+
+## Who WellSpace is for
+- High school students who want a simple daily wellness check-in.
+- Teachers and schools who want a general sense of classroom wellbeing and early signals when a student may need support.
+
+## Privacy and cookies
+- This marketing page uses no accounts and collects no personal or health data.
+- It uses privacy-safe Google Analytics (only after visitor consent) for basic visit stats only, nothing personal.
+- The main app has its own separate Privacy Policy and Cookie Policy covering account and health data, since that is where that data actually lives.
+
+## Key links
+- App: https://wellspaceapp.github.io/WellSpace/
+- Source code: https://github.com/WellSpaceApp/WellSpace
+- This site's source: https://github.com/WellSpaceApp/WellSpaceHQ
+
+## Contact
+wellspacewebsite@gmail.com
