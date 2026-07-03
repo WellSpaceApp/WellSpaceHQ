@@ -9,7 +9,7 @@
 <meta property="og:description" content="A free tool so students never have to say it out loud."/>
 <meta property="og:url" content="https://wellspacehq.github.io"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -33,7 +33,7 @@
 html{scroll-behavior:smooth}
 
 body{
-  font-family:'DM Sans',sans-serif;
+  font-family:'Sora',sans-serif;
   background:var(--paper);
   color:var(--ink);
   line-height:1.6;
@@ -51,7 +51,7 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
 }
 .nav-brand{
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:1.25rem;
   color:var(--white);
   text-decoration:none;
@@ -122,7 +122,7 @@ nav{
   margin-bottom:1.75rem;
 }
 .hero h1{
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:clamp(2.4rem,6vw,4rem);
   font-weight:600;
   color:var(--white);
@@ -177,7 +177,7 @@ nav{
 }
 .hero-stat{text-align:center;}
 .hero-stat-num{
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:1.75rem;
   color:var(--white);
   font-weight:600;
@@ -208,7 +208,7 @@ nav{
   display:flex;gap:0.75rem;align-items:flex-start;
 }
 .proof-quote-mark{
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:2rem;
   color:var(--green);
   line-height:1;
@@ -243,7 +243,7 @@ section{padding:5rem 2rem;}
   display:block;
 }
 .section-title{
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:clamp(1.8rem,4vw,2.6rem);
   font-weight:600;
   color:var(--navy);
@@ -287,7 +287,7 @@ section{padding:5rem 2rem;}
   background:var(--green-pale);
   border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  font-size:1rem;
+  color:var(--green-dark);
   flex-shrink:0;
 }
 .value-title{font-weight:600;color:var(--navy);font-size:0.9rem;margin-bottom:0.25rem;}
@@ -309,7 +309,7 @@ section{padding:5rem 2rem;}
   position:relative;
 }
 .step-num{
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:2.5rem;
   font-weight:700;
   color:var(--muted);
@@ -339,7 +339,7 @@ section{padding:5rem 2rem;}
   color:white;
 }
 .privacy-card h3{
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:1.3rem;
   font-weight:600;
   margin-bottom:1.5rem;
@@ -417,7 +417,7 @@ section{padding:5rem 2rem;}
 }
 .testimonial-text::before{
   content:'\201C';
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:1.5rem;
   color:var(--green);
   display:block;
@@ -448,7 +448,7 @@ section{padding:5rem 2rem;}
   cursor:pointer;
   display:flex;justify-content:space-between;align-items:center;
   gap:1rem;
-  font-family:'DM Sans',sans-serif;
+  font-family:'Sora',sans-serif;
 }
 .faq-q:hover{color:var(--green);}
 .faq-icon{
@@ -501,7 +501,8 @@ section{padding:5rem 2rem;}
   margin-bottom:0.4rem;
   display:flex;align-items:center;gap:0.5rem;
 }
-.role-emoji{font-size:1rem;}
+.role-emoji{display:inline-flex;align-items:center;color:var(--green-dark);}
+.role-emoji svg{width:16px;height:16px;vertical-align:-3px;}
 .role-desc{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.5;}
 .volunteer-cta{text-align:center;}
 .btn-green-lg{
@@ -580,7 +581,7 @@ section{padding:5rem 2rem;}
   background:var(--green-pale);
   border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;
+  color:var(--green-dark);
   flex-shrink:0;
 }
 .contact-label{
@@ -623,7 +624,7 @@ section{padding:5rem 2rem;}
   text-align:center;
 }
 .schedule-card h3{
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:1.3rem;
   margin-bottom:0.75rem;
   color:white;
@@ -656,7 +657,7 @@ footer{
 }
 .footer-inner{max-width:900px;margin:0 auto;}
 .footer-brand{
-  font-family:'Fraunces',serif;
+  font-family:'Sora',sans-serif;
   font-size:1.1rem;
   color:white;
   margin-bottom:0.5rem;
@@ -720,8 +721,8 @@ footer{
 <section class="hero">
   <div class="hero-inner">
     <span class="hero-eyebrow">Free Student Wellness Web App</span>
-    <h1>The space between how students feel and what <em>teachers know.</em></h1>
-    <p class="hero-sub">WellSpace gives students a private voice and educators a clear picture. No awkward conversations required. No download. Free forever.</p>
+    <h1>A private way for students to tell teachers how they're doing.</h1>
+    <p class="hero-sub">Free daily mood check-ins for your classroom. No download, no cost, no signup fees. Students stay in control of what they share.</p>
     <div class="hero-actions">
       <a href="https://wellspaceapp.github.io/WellSpace/" class="btn-primary">Try WellSpace For Free</a>
       <a href="#mission" class="btn-outline-white">Learn more</a>
@@ -738,10 +739,6 @@ footer{
   <div class="hero-stat">
     <span class="hero-stat-num">10 sec</span>
     <span class="hero-stat-label">Student check-in</span>
-  </div>
-  <div class="hero-stat">
-    <span class="hero-stat-num">Private</span>
-    <span class="hero-stat-label">By default</span>
   </div>
 </div>
 </section>
@@ -787,28 +784,28 @@ footer{
       </div>
       <div class="mission-values">
         <div class="value-card">
-          <div class="value-icon">🔒</div>
+          <div class="value-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
           <div>
             <div class="value-title">Privacy first</div>
             <div class="value-desc">Students control their own data at all times. Nothing is shared without their explicit action.</div>
           </div>
         </div>
         <div class="value-card">
-          <div class="value-icon">💚</div>
+          <div class="value-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-10-9.3C.5 8 2 4 6 4c2 0 3.5 1.2 4.5 2.8C11.5 5.2 13 4 15 4c4 0 5.5 4 4 7.7C19.5 16.4 12 21 12 21z"/></svg></div>
           <div>
             <div class="value-title">Free forever</div>
             <div class="value-desc">No subscriptions, no ads, no paywalls. No student or school should be priced out of wellness tools.</div>
           </div>
         </div>
         <div class="value-card">
-          <div class="value-icon">🎯</div>
+          <div class="value-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
           <div>
             <div class="value-title">Human-centred</div>
             <div class="value-desc">Every feature exists to help real students with real pressures, not to generate data.</div>
           </div>
         </div>
         <div class="value-card">
-          <div class="value-icon">🌱</div>
+          <div class="value-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 7 8 5 4 5c0 5 3 8 8 8Z"/><path d="M12 12c0-4 3-6 7-6 0 4-2 7-7 7Z"/></svg></div>
           <div>
             <div class="value-title">Built in public</div>
             <div class="value-desc">One student, one summer, building something real. No corporate backing. No venture capital.</div>
@@ -1018,49 +1015,29 @@ footer{
     <p class="section-body">WellSpace is one student building something real. There are parts of this that are too important to do alone. If any of the roles below sound like you, we want to hear from you.</p>
     <div class="roles-grid">
       <div class="role-card">
-        <div class="role-title"><span class="role-emoji">🎬</span> Content Creator</div>
+        <div class="role-title"><span class="role-emoji"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg></span> Content Creator</div>
         <div class="role-desc">Plans, films, edits, and posts the videos and graphics that get WellSpace in front of people who have never heard of it. You do not need to show your face. Screen recordings, AI voiceover, and text-on-screen are all fine.</div>
       </div>
       <div class="role-card">
-        <div class="role-title"><span class="role-emoji">📣</span> Partnerships and Outreach</div>
+        <div class="role-title"><span class="role-emoji"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v3a1 1 0 0 0 1 1h2l4 5v-16l-4 5H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/><path d="M20 5a9 9 0 0 1 0 14"/></svg></span> Partnerships and Outreach</div>
         <div class="role-desc">Finds and contacts teachers, schools, and after-school programs, writes the outreach message, and follows up. Good fit if you are comfortable writing to adults you do not know and seeing it through.</div>
       </div>
       <div class="role-card">
-        <div class="role-title"><span class="role-emoji">💰</span> Grants and Funding</div>
+        <div class="role-title"><span class="role-emoji"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.4 1.2-2.5 2.5-2.5s2.5.9 2.5 2c0 1.5-1.5 2-2.5 2.5-1.5.7-2.5 1.4-2.5 3 0 1.1 1.2 2 2.5 2s2.5-.9 2.5-2"/></svg></span> Grants and Funding</div>
         <div class="role-desc">Researches scholarships, youth innovation grants, and funding opportunities, and helps put together the actual application. Good fit if you are a strong researcher and writer.</div>
       </div>
       <div class="role-card">
-        <div class="role-title"><span class="role-emoji">💬</span> Community and Support</div>
+        <div class="role-title"><span class="role-emoji"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.6 8.6 0 0 1-4-1L3 20l1.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg></span> Community and Support</div>
         <div class="role-desc">Handles replies, DMs, and questions from students and teachers. Helps new users get set up and flags anything that needs immediate attention. Good fit if you are organized and responsive.</div>
       </div>
       <div class="role-card">
-        <div class="role-title"><span class="role-emoji">🔍</span> Research and Strategy</div>
+        <div class="role-title"><span class="role-emoji"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span> Research and Strategy</div>
         <div class="role-desc">Looks at what is working for similar youth-led and wellness projects, brings back real findings, and helps inform decisions about direction. Good fit if you like digging into information and presenting what you find clearly.</div>
       </div>
     </div>
     <div class="volunteer-cta">
       <a href="https://forms.gle/B25bTZUp7PzgkpXw8" class="btn-green-lg">Apply to Volunteer</a>
       <p class="consent-note">Volunteers under 18 will be asked to provide parental consent as part of the application. All roles are remote and unpaid.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TIMELINE -->
-<section class="timeline-section" id="timeline">
-  <div class="section-inner">
-    <span class="section-eyebrow">Built in public</span>
-    <h2 class="section-title">How this got here.</h2>
-    <p class="section-body">No corporate backing. No venture capital. Just one student building something real, one fix at a time.</p>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">March 2026</div>
-        <div class="timeline-text">First version of WellSpace goes live. HTML, CSS, and JavaScript on GitHub Pages.</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">June 2026</div>
-        <div class="timeline-text">WellSpace posted to online educator communities. 9,500 views. A teacher-researcher reaches out to run a trial.</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1073,21 +1050,21 @@ footer{
     <div class="contact-grid">
       <div>
         <div class="contact-item">
-          <div class="contact-icon">✉️</div>
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
           <div>
             <div class="contact-label">Email</div>
             <div class="contact-value"><a href="mailto:wellspacewebsite@gmail.com">wellspacewebsite@gmail.com</a></div>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">👤</div>
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
           <div>
             <div class="contact-label">Creator</div>
             <div class="contact-value"><a href="https://www.linkedin.com/in/muhammad-taha-480222360/">Muhammad Taha on LinkedIn</a></div>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">📱</div>
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
           <div>
             <div class="contact-label">Social Media</div>
             <div class="contact-value">
@@ -1100,14 +1077,14 @@ footer{
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">💻</div>
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></div>
           <div>
             <div class="contact-label">The Site</div>
             <div class="contact-value"><a href="https://wellspaceapp.github.io/WellSpace/">wellspaceapp.github.io/WellSpace</a></div>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">📋</div>
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 11h6M9 15h6"/></svg></div>
           <div>
             <div class="contact-label">Privacy Policy</div>
             <div class="contact-value"><a href="https://wellspaceapp.github.io/WellSpace/privacy.html">Read our Privacy Policy</a></div>
@@ -1131,7 +1108,7 @@ footer{
       <a href="https://wellspaceapp.github.io/WellSpace/">The Site</a>
       <a href="https://forms.gle/B25bTZUp7PzgkpXw8">Volunteer</a>
       <a href="mailto:wellspacewebsite@gmail.com">Contact</a>
-      <a href="https://www.linkedin.com/in/muhammad-taha-480222360/">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/wellspacewebapp/">LinkedIn</a>
       <a href="https://github.com/WellSpaceApp/WellSpace">GitHub</a>
       <a href="https://wellspaceapp.github.io/WellSpace/privacy.html">Privacy Policy</a>
     </div>
