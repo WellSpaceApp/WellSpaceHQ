@@ -766,6 +766,9 @@ footer{
   padding:0.65rem 1.4rem;cursor:pointer;
 }
 .cookie-modal-ok:hover{background:var(--green-dark);}
+.skip-link{position:absolute;top:-40px;left:8px;background:#0d1b2a;color:#fff;padding:10px 16px;border-radius:6px;z-index:10000;text-decoration:none;font-weight:600;transition:top .15s ease;}
+.skip-link:focus{top:8px;}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #4d9fff;outline-offset:2px;}
 </style>
 </head>
 <body>
@@ -781,12 +784,15 @@ footer{
     <a href="#contact">Contact</a>
     <a href="https://wellspaceapp.github.io/WellSpace/" class="nav-cta">Try the Site</a>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- HERO -->
+<main id="main-content">
 <section class="hero">
   <div class="hero-inner">
     <span class="hero-eyebrow">Free Student Wellness Web App</span>
@@ -794,7 +800,7 @@ footer{
     <p class="hero-sub">Free daily mood check-ins for your classroom. No download, no cost, no signup fees. Students stay in control of what they share.</p>
     <div class="hero-actions">
       <a href="https://wellspaceapp.github.io/WellSpace/" class="btn-primary">Try WellSpace For Free</a>
-      <a href="#mission" class="btn-outline-white">Learn more</a>
+      <a href="#mission" class="btn-outline-white" aria-label="Learn more about our mission">Learn more</a>
     </div>
   <div class="hero-stats">
   <div class="hero-stat">
@@ -994,82 +1000,71 @@ footer{
     <div class="faq-list">
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1" onclick="toggleFaq(this)">
           Where is student data stored?
           <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Student data is stored on Google Firebase on North American servers, with encrypted HTTPS connections and strict per-user security rules. Each user's data is stored in their own private Firestore document with no cross-user access possible. Data is kept until a student deletes their account. Accounts inactive for 24 months are automatically deleted along with all data. We are transparent about one current limitation: Canadian data residency on Montreal servers requires Firebase's paid tier, which WellSpace does not currently use.</div>
+        </button><div class="faq-a" id="faq-a-1" role="region" aria-labelledby="faq-q-1">Student data is stored on Google Firebase on North American servers, with encrypted HTTPS connections and strict per-user security rules. Each user's data is stored in their own private Firestore document with no cross-user access possible. Data is kept until a student deletes their account. Accounts inactive for 24 months are automatically deleted along with all data. We are transparent about one current limitation: Canadian data residency on Montreal servers requires Firebase's paid tier, which WellSpace does not currently use.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2" onclick="toggleFaq(this)">
           Can teachers see everything a student enters?
           <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">No. Teachers only see what a student explicitly chooses to share. Students have a "Share with Teacher" toggle on every entry, including mood check-ins, sleep logs, and wellness data. Private journal entries are never visible to anyone. If a student keeps something private, it stays private.</div>
+        </button><div class="faq-a" id="faq-a-2" role="region" aria-labelledby="faq-q-2">No. Teachers only see what a student explicitly chooses to share. Students have a "Share with Teacher" toggle on every entry, including mood check-ins, sleep logs, and wellness data. Private journal entries are never visible to anyone. If a student keeps something private, it stays private.</div>
       </div>
 <div class="faq-item">
-  <button class="faq-q" onclick="toggleFaq(this)">How long is student data kept?<span class="faq-icon">+</span></button>
-  <div class="faq-a">Data is stored until a student deletes their account. Accounts inactive for 24 months are automatically deleted along with all associated data. There is no backup and no way to recover deleted data. Students can delete everything instantly at any time from their profile settings.</div>
+  <button class="faq-q" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3" onclick="toggleFaq(this)">How long is student data kept?<span class="faq-icon">+</span></button><div class="faq-a" id="faq-a-3" role="region" aria-labelledby="faq-q-3">Data is stored until a student deletes their account. Accounts inactive for 24 months are automatically deleted along with all associated data. There is no backup and no way to recover deleted data. Students can delete everything instantly at any time from their profile settings.</div>
 </div>
       
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4" onclick="toggleFaq(this)">
           Does WellSpace replace a school guidance counsellor?
           <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">No. WellSpace is a classroom check-in tool, not a counselling or crisis intervention system. If a student shares something that requires escalation, teachers follow the same school procedures they normally would. WellSpace does include built-in province-specific crisis helpline resources so students know where to get real support when they need it.</div>
+        </button><div class="faq-a" id="faq-a-4" role="region" aria-labelledby="faq-q-4">No. WellSpace is a classroom check-in tool, not a counselling or crisis intervention system. If a student shares something that requires escalation, teachers follow the same school procedures they normally would. WellSpace does include built-in province-specific crisis helpline resources so students know where to get real support when they need it.</div>
       </div>
       <div class="faq-item">
-  <button class="faq-q" onclick="toggleFaq(this)">Can WellSpace be used as an official student record?<span class="faq-icon">+</span></button>
-  <div class="faq-a">No. WellSpace is a classroom check-in tool, not an official record system. Teachers should not rely on WellSpace as the sole documentation of any student concern. Anything requiring follow-up, safeguarding action, or formal documentation must be recorded through your school's standard procedures. If a student deletes their account, all data is permanently gone and cannot be recovered by anyone including WellSpace.</div>
+  <button class="faq-q" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5" onclick="toggleFaq(this)">Can WellSpace be used as an official student record?<span class="faq-icon">+</span></button><div class="faq-a" id="faq-a-5" role="region" aria-labelledby="faq-q-5">No. WellSpace is a classroom check-in tool, not an official record system. Teachers should not rely on WellSpace as the sole documentation of any student concern. Anything requiring follow-up, safeguarding action, or formal documentation must be recorded through your school's standard procedures. If a student deletes their account, all data is permanently gone and cannot be recovered by anyone including WellSpace.</div>
 </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6" onclick="toggleFaq(this)">
           Do I need school board approval to use this?
           <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Not for individual teacher use. You can use WellSpace the same way you would adopt any classroom tool independently, the same way teachers use Google Forms, Notion, or other tools without requiring district approval. For board-wide rollout, you would want to follow your board's standard process for third-party tools and data agreements.</div>
+        </button><div class="faq-a" id="faq-a-6" role="region" aria-labelledby="faq-q-6">Not for individual teacher use. You can use WellSpace the same way you would adopt any classroom tool independently, the same way teachers use Google Forms, Notion, or other tools without requiring district approval. For board-wide rollout, you would want to follow your board's standard process for third-party tools and data agreements.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7" onclick="toggleFaq(this)">
           Is this actually free? What is the catch?
           <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">There is no catch. WellSpace is free for teachers and students with no subscription, no trial period, and no ads. It is built and maintained by one student who believes no school should be priced out of a wellness tool. The only costs are Firebase's free tier limits, which we manage carefully.</div>
+        </button><div class="faq-a" id="faq-a-7" role="region" aria-labelledby="faq-q-7">There is no catch. WellSpace is free for teachers and students with no subscription, no trial period, and no ads. It is built and maintained by one student who believes no school should be priced out of a wellness tool. The only costs are Firebase's free tier limits, which we manage carefully.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8" onclick="toggleFaq(this)">
           Can students see each other's responses?
           <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">No. Student responses are only visible to the teacher whose class they chose to share with. Other students cannot see any responses. The only people who can ever see a student's shared data are that student and the specific teacher they sent it to.</div>
+        </button><div class="faq-a" id="faq-a-8" role="region" aria-labelledby="faq-q-8">No. Student responses are only visible to the teacher whose class they chose to share with. Other students cannot see any responses. The only people who can ever see a student's shared data are that student and the specific teacher they sent it to.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" id="faq-q-9" aria-expanded="false" aria-controls="faq-a-9" onclick="toggleFaq(this)">
           What does WellSpace actually include?
           <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">For students: daily mood check-ins per class period, a weekly goal planner, a sleep and wellness tracker, a private journal, and province-specific crisis helpline resources. For teachers: a student dashboard showing shared moods and wellness data, a class management system with codes, mood trend alerts, and a social worker contact field that appears when students log a negative mood.</div>
+        </button><div class="faq-a" id="faq-a-9" role="region" aria-labelledby="faq-q-9">For students: daily mood check-ins per class period, a weekly goal planner, a sleep and wellness tracker, a private journal, and province-specific crisis helpline resources. For teachers: a student dashboard showing shared moods and wellness data, a class management system with codes, mood trend alerts, and a social worker contact field that appears when students log a negative mood.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" id="faq-q-10" aria-expanded="false" aria-controls="faq-a-10" onclick="toggleFaq(this)">
           Does it work on phones and school Chromebooks?
           <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Yes. WellSpace is a Progressive Web App that works in any browser on any device, including phones, tablets, and Chromebooks. No download or app store is required. Students can also add it to their home screen to use it like a native app.</div>
+        </button><div class="faq-a" id="faq-a-10" role="region" aria-labelledby="faq-q-10">Yes. WellSpace is a Progressive Web App that works in any browser on any device, including phones, tablets, and Chromebooks. No download or app store is required. Students can also add it to their home screen to use it like a native app.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" id="faq-q-11" aria-expanded="false" aria-controls="faq-a-11" onclick="toggleFaq(this)">
           How do I get started as a teacher?
           <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Go to wellspaceapp.github.io/WellSpace, click "I'm a Teacher," sign up with your email, and create your first class. The whole setup takes under five minutes. Share the class code with your students and they can join immediately. You can also schedule a short walkthrough using the link in the Contact section below if you prefer to see it live first.</div>
+        </button><div class="faq-a" id="faq-a-11" role="region" aria-labelledby="faq-q-11">Go to wellspaceapp.github.io/WellSpace, click "I'm a Teacher," sign up with your email, and create your first class. The whole setup takes under five minutes. Share the class code with your students and they can join immediately. You can also schedule a short walkthrough using the link in the Contact section below if you prefer to see it live first.</div>
       </div>
 
     </div>
@@ -1199,6 +1194,8 @@ footer{
 </div>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">WellSpace HQ</div>
@@ -1218,13 +1215,15 @@ footer{
 <script>
 function toggleFaq(btn){
   const item = btn.closest('.faq-item');
-  item.classList.toggle('open');
+  const isOpen = item.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
 
 const navToggle = document.getElementById('navToggle');
 const navLinks  = document.getElementById('navLinks');
 navToggle.addEventListener('click',()=>{
-  navLinks.classList.toggle('open');
+  const isOpen = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 });
 
 // COOKIE CONSENT + PRIVACY-SAFE GOOGLE ANALYTICS
